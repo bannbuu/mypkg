@@ -1,0 +1,26 @@
+name: test
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    container: ryuichiueda/ubuntu22.04-ros2:latest  # ROS2入りコンテナ
+
+    steps:
+      - uses: actions/checkout@v4  # リポジトリをコンテナ内に展開
+
+      - name: build and test
+        run: |
+          # ros2 のワークスペースを作成
+          mkdir -p /root/ros2_ws/src
+          # チェックアウトされたリポジトリを ros2_ws/src/ の下にコピー
+          cp -r "$GITHUB_WORKSPACE" /root/ros2_ws/src/
+          cd /root/ros2_ws
+
+          # ビルド
+          colcon build
+
+          # listener が Listen: 10 を出すかテスト (/root をホームとして渡す)
+          bash -xv ./src/mypkg/test/test.bash /root
+
