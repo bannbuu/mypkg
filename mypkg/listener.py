@@ -11,3 +11,8 @@ def main():
 
     while not client.wait_for_service(timeout_sec=1.0):
         node.get_logger().info('waiting...')
+
+    req = SetAngle.Request(target_angle=90.0)
+    future = client.call_async(req)
+
+    rclpy.spin_until_future_complete(node, future)
