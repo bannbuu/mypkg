@@ -4,12 +4,6 @@ import rclpy
 from rclpy.node import Node
 from mypkg.srv import SetAngle
 
-#!/usr/bin/env python3
-
-import rclpy
-from rclpy.node import Node
-from mypkg.srv import SetAngle
-
 def main():
     rclpy.init()
     node = Node("servo_client")
