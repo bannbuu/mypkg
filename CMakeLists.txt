@@ -16,7 +16,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/SetAngle.srv"
 )
 
-# 2. Pythonプログラムをインストールする
+# Pythonプログラムのインストール
 install(PROGRAMS
   mypkg/talker.py
   mypkg/listener.py
