@@ -16,3 +16,12 @@ def main():
     future = client.call_async(req)
 
     rclpy.spin_until_future_complete(node, future)
+
+    try:
+        response = future.result()
+        node.get_logger().info(f'Success: {response.success}')
+    except Exception as e:
+        node.get_logger().error(f'Service call failed: {e}')
+
+    node.destroy_node()
+    rclpy.shutdown()
