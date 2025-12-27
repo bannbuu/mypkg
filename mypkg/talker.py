@@ -13,7 +13,18 @@ def cb(request, response):
         response.current_angle = -1.0
     return response
 
-
+def main():
+    rclpy.init()
+    node = rclpy.create_node('servo_server')
+    node.create_service(SetAngle, 'set_servo_angle', cb)
+    
+    node.get_logger().info('Servo Service Server is ready.')
+    
+    try:
+        rclpy.spin(node)
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
 
 if __name__ == "__main__":
     main()
