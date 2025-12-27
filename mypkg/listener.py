@@ -10,7 +10,7 @@ def main():
 
     client = node.create_client(SetAngle, 'set_servo_angle')
 
-    while not client.wait_for_service(timeout_sec=1.0):
+    while not client.wait_for_service(timeout_sec=2.0):
      node.get_logger().info('waiting for service...')
 
     req = SetAngle.Request()
@@ -33,3 +33,4 @@ def main():
     rclpy.shutdown()
 
 if __name__ == "__main__":
+    main()
