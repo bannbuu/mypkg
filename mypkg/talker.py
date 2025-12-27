@@ -10,7 +10,6 @@ node = Node("talker")  # ノード作成（node という「オブジェクト�
 pub = node.create_publisher(Int16, "countup", 10)  # パブリッシャのオブジェクト作成
 n = 0  # カウント用変数
 
-
 def cb():  # タイマーで定期実行されるコールバック関数
     global n  # 関数を抜けても n がリセットされないようにする
     msg = Int16()  # メッセージの「オブジェクト」
