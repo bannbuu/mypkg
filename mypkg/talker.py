@@ -4,26 +4,31 @@ import rclpy  # ROS 2 のクライアント用ライブラリ
 from rclpy.node import Node  # ノードを作るためのクラス
 from mypkg.srv import SetAngle  # 通信の型（16ビット符号付き整数）
 
-rclpy.init()  # ROS 2 を使う準備
-
-node = Node("talker")  # ノード作成（node という「オブジェクト」を作成）
-pub = node.create_publisher(Int16, "countup", 10)  # パブリッシャのオブジェクト作成
-n = 0  # カウント用変数
-
-def cb():  # タイマーで定期実行されるコールバック関数
-    global n  # 関数を抜けても n がリセットされないようにする
-    msg = Int16()  # メッセージの「オブジェクト」
-    msg.data = n  # msg オブジェクトの data に n をセット
-    pub.publish(msg)  # pub の publish でメッセージ送信
-    node.get_logger().info(f"Publishing: {msg.data}")  # ログ出力（おまけ）
-    n += 1
-
+def cb(request, response):
+    if 0.0 <= request.target_angle <= 180.0:
+        response.success = True
+        response.current_angle = request.target_angle
+    else:
+        response.success = False
+        response.current_angle = -1.0
+    return response
 
 def main():
-    node.create_timer(0.5, cb)  # タイマー設定（0.5秒ごとに cb を呼ぶ）
-    rclpy.spin(node)  # 実行（無限ループ）
-
+    rclpy.init()
+    
+    node = Node("servo_server") 
+    
+    srv = node.create_service(SetAngle, "set_servo_angle", cb)
+    
+    node.get_logger().info("Servo Service Server is ready.")
+    
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
 
 if __name__ == "__main__":
     main()
-

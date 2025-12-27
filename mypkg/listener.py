@@ -2,25 +2,40 @@
 
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Int16
+from mypkg.srv import SetAngle
 
+#!/usr/bin/env python3
 
-rclpy.init()
-node = Node("listener")  # ノード作成
-
-
-def cb(msg):  # /countup からメッセージをもらったときに呼ばれる関数
-    global node
-    node.get_logger().info("Listen: %d" % msg.data)
-
+import rclpy
+from rclpy.node import Node
+from mypkg.srv import SetAngle
 
 def main():
-    # /countup を購読するサブスクライバを作成
-    sub = node.create_subscription(Int16, "countup", cb, 10)
-    # 変数を使わないと警告が出るので、あえて参照だけしておく
-    _ = sub
-    rclpy.spin(node)
+    rclpy.init()
+    node = Node("servo_client")
+    
+    client = node.create_client(SetAngle, 'set_servo_angle')
+    
+    while not client.wait_for_service(timeout_sec=1.0):
+        node.get_logger().info('waiting for service...')
 
+    req = SetAngle.Request()
+    req.target_angle = 90.0
+    
+    future = client.call_async(req)
+    
+    while rclpy.ok():
+        rclpy.spin_once(node)
+        if future.done():
+            try:
+                response = future.result()
+                node.get_logger().info(f'Result: {response.success}, Angle: {response.current_angle}')
+            except Exception as e:
+                node.get_logger().info('Service call failed')
+            break
+
+    node.destroy_node()
+    rclpy.shutdown()
 
 if __name__ == "__main__":
     main()
