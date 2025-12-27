@@ -2,7 +2,7 @@
 
 import rclpy  # ROS 2 のクライアント用ライブラリ
 from rclpy.node import Node  # ノードを作るためのクラス
-from std_msgs.msg import Int16  # 通信の型（16ビット符号付き整数）
+from mypkg.srv import SetAngle  # 通信の型（16ビット符号付き整数）
 
 rclpy.init()  # ROS 2 を使う準備
 
