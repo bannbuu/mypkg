@@ -7,7 +7,7 @@ dir="$HOME"
 
 cd "$dir/ros2_ws"
 colcon build
-source "$dir/.bashrc"
+source /opt/ros/foxy/setup.bash  
 
 # launchファイルを test.launch.py に変更
 timeout 15 ros2 launch mypkg talker_listener.launch.py > /tmp/mypkg.log
