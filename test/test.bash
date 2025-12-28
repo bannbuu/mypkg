@@ -12,6 +12,6 @@ cd "$dir/ros2_ws"
 colcon build
 
 source install/setup.bash
-timeout 15 ros2 launch mypkg talker_listener.launch.py > /tmp/mypkg.log 2>&1 || true
+timeout 15 ros2 launch mypkg servo.launch.py > /tmp/mypkg.log 2>&1 || true
 cat /tmp/mypkg.log
 grep -q 'Result: True, Angle: 90.0' /tmp/mypkg.log
