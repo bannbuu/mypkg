@@ -27,11 +27,14 @@ ros2 launch mypkg servo.launch.py
 ## ノードと通信
 ### サービス型
 ```mypkg/srv/SetAngle```
- - リクエスト:```bashfloat32 angle(目標角度)```
- - レスポンス:```bashbool success(動作確認)```
+ - リクエスト:```float32 angle(目標角度)```
+ - レスポンス:```bool success(動作確認)```
 ### 通信詳細
-- Service名:```bash/set_servo_angle```
-- Node名:```bashservo_node, servo_request_node```
+- Service名:```/set_servo_angle```
+- Node名:```servo_node, servo_request_node```
+
+## テスト環境
+- Ubuntu 20.04 LTS
 
 ## ライセンス
 このソフトウェアは、三条項BSDライセンスで配布しています。
