@@ -16,8 +16,7 @@ def cb(request, response):
 def main():
     rclpy.init()
     node = rclpy.create_node('servo_server')
-    node.create_service(SetAngle, 'set_servo_angle', cb)
-    
+    node.create_service(SetAngle, 'set_servo_angle', cb)    
     node.get_logger().info('Servo Service Server is ready.')
     
     try:
