@@ -26,11 +26,14 @@ ros2 launch mypkg servo.launch.py
 
 ## ノードと通信
 ### サービス型
-####mypkg/srv/SetAngle
+mypkg/srv/SetAngle
  - リクエスト:```bashfloat32 angle(目標角度)```
  - レスポンス:```bashbool success(動作確認)```
 ### 通信詳細
 - Service名:```bash/set_servo_angle```
 - Node名:```bashservo_node, servo_request_node```
 
-
+## ライセンス
+このソフトウェアは、三条項BSDライセンスで配布しています。
+詳細は LICENSE ファイルを参照してください。
+© 2025 Yoshiaki Naruse
