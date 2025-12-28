@@ -18,8 +18,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 
 # Pythonプログラムのインストール
 install(PROGRAMS
-  mypkg/talker.py
-  mypkg/listener.py
+  mypkg/servo_server.py
+  mypkg/servo_client.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
