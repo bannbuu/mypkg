@@ -18,13 +18,13 @@ setup(
     zip_safe=True,
     maintainer='Yoshiaki Naruse',
     maintainer_email='zhengyit364@gmail.com',
-    description='a package for practice',
+    description='Servo control package',
     license='BSD-3-Clause',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'talker = mypkg.talker:main',  # talker.py の main を呼ぶ
-            'listener = mypkg.listener:main',
+            'talker = mypkg.servo_server:main',  
+            'listener = mypkg.servo_client:main',
         ],
     },
 )
