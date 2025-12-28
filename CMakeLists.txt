@@ -23,7 +23,7 @@ install(PROGRAMS
   DESTINATION lib/${PROJECT_NAME}
 )
 
-# 3. フォルダごとインストール（launch用）
+# 3.（launch用）
 install(DIRECTORY
   launch
   DESTINATION share/${PROJECT_NAME}
