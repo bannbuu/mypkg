@@ -16,10 +16,21 @@ ros2 launch mypkg servo.launch.py
 ```
 
 ## 実行例
+```bash
 [INFO] [servo_server.py-1]: process started with pid [xxxx]
 [INFO] [servo_client.py-2]: process started with pid [xxxx]
 [servo_server.py-1] [INFO] [servo_node]: Servo Service Server is ready.
 [servo_client.py-2] [INFO] [servo_request_node]: Result: True, Angle: 90.0
 [INFO] [servo_client.py-2]: process has finished cleanly
+```
+
+## ノードと通信
+### サービス型
+- mypkg/srv/SetAngle
+ - リクエスト:`$float32 angle`(目標角度)
+ - レスポンス:`$bool success`(動作確認)
+### 通信詳細
+- Service名:`$/set_servo_angle`
+- Node名:servo_node, servo_request_node
 
 
