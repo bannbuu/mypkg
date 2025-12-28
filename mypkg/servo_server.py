@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-FileCopyrightText: 2025 Yoshiaki Naruse <zhengyit364@gmail.com>
+# SPDX-License-Identifier: BSD-3-Clause
 
 import rclpy  # ROS 2 のクライアント用ライブラリ
 from rclpy.node import Node  # ノードを作るためのクラス

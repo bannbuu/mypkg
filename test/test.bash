@@ -1,4 +1,7 @@
 #!/bin/bash
+# SPDX-FileCopyrightText: 2025 Yoshiaki Naruse <zhengyit364@gmail.com>
+# SPDX-License-Identifier: BSD-3-Clause
+
 if [ -f /opt/ros/humble/setup.bash ]; then
     source /opt/ros/humble/setup.bash
 elif [ -f /opt/ros/foxy/setup.bash ]; then
