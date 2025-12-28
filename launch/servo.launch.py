@@ -6,13 +6,13 @@ def generate_launch_description():
         # サーボサーバーを起動
         launch_ros.actions.Node(
             package='mypkg',
-            executable='servo_server',  
+            executable='servo_server.py',  
             name='servo_node'
         ),
         # サーボクライアントを起動（90度送るやつ）
         launch_ros.actions.Node(
             package='mypkg',
-            executable='servo_client',  
+            executable='servo_client.py',  
             name='servo_request_node'
         ),
     ])
