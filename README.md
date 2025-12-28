@@ -10,4 +10,16 @@
 - `$servo_server.py` (servo_node): クライアントからの角度リクエストを処理します。
 - `$servo_client.py` (servo_request_node): 起動時に自動的に角度リクエスト（90度）を送信します。
 
+## 実行方法
+```bash
+ros2 launch mypkg servo.launch.py
+```
+
+## 実行例
+[INFO] [servo_server.py-1]: process started with pid [xxxx]
+[INFO] [servo_client.py-2]: process started with pid [xxxx]
+[servo_server.py-1] [INFO] [servo_node]: Servo Service Server is ready.
+[servo_client.py-2] [INFO] [servo_request_node]: Result: True, Angle: 90.0
+[INFO] [servo_client.py-2]: process has finished cleanly
+
 
