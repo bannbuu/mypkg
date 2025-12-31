@@ -1,4 +1,4 @@
-# mypkg
+# SetAngle(mypkg)
 
 ![test](https://github.com/bannbuu/mypkg/actions/workflows/test.yml/badge.svg)
 
