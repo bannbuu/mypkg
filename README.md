@@ -34,7 +34,7 @@ ros2 launch mypkg servo.launch.py
 - Node名:```servo_node, servo_request_node```
 
 ## テスト環境
-- Ubuntu 20.04 LTS
+- Ubuntu 22.04 LTS
 
 ## ライセンス
 このソフトウェアは、三条項BSDライセンスで配布しています。
